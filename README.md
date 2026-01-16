@@ -83,7 +83,7 @@ de encontrar o conjunto de parâmetros que determina a melhor performance do alg
 Passo 9: Determinar as métricas encontradas
 
 
-# Resultados
+## Resultados
 
 # Resultados dos Algoritmos
 
@@ -92,55 +92,53 @@ img/comparacao_algoritmos.png)
 
 O Algoritmo que obteve o melhor resultado em ambas as métricas Precision at K e Recall at K foi o XGBoost, seguido de perto pelo Random Forest.
 
-Além da questão da performance em si, os modelos treinados pelo XGBoost costumam ocupar menos memória e espaço em disco comparado com modelos
-gerados pelo Random Forest ou ExtraTrees. Desta forma o XGBoost se torna a melhor escolha. 
+Além da questão da performance em si, os modelos treinados pelo XGBoost costumam ocupar menos memória e espaço em disco comparado com modelos gerados pelo Random Forest ou ExtraTrees. Desta forma o XGBoost se torna a melhor escolha. 
 
-Após o fine tuning dos hyperparamentros do XGBoostRegressor, a performance econtrada se mostrou levemente melhor que a performance inicial do RandomForestRegressor.
+Após o ajuste de hiperparâmetros a performance final do algoritmo foi a seguinte:
 
-![classificacao_treinamento](
-img/finetuning_algoritmo.png)
-
-
+| Model   | Precision at k | Recall at k   |
+| ------  | --------       | -------       |
+| XGBoost | 0.35 +/- 0.01  | 0.57 +/- 0.01 |      |
 
 
+# Performance na prática
+
+![performace_resultado](
+img/performance_resultado.png)
+
+```
+- Para alcançar 29% dos interessados em um novo seguro automotivo, é necessário contactar 10% dos clientes atuais;
+- Para alcançar 55% dos interessados em um novo seguro automotivo, é necessário contactar 20% dos clientes atuais;
+- Para alcançar 82% dos interessados em um novo seguro automotivo, é necessário contactar 33% dos clientes atuais;
+- Para alcançar 98% dos interessados em um novo seguro automotivo, é necessário contactar 50% dos clientes atuais.
+```
 
 
-# Conclusão
 
-Nesse ensaio de Machine Learning, consegui adquirir experiência e
-entender melhor sobre os limites dos algoritmos entre os estados de
-underffiting e overfitting.
+## Uso da API
 
-Algoritmos baseados em árvores são sensíveis quanto a profundidade do
-crescimento e do número de árvores na floresta, fazendo com que a
-escolha correta dos valores desses parâmetros impeçam os algoritmos de
-entrar no estado de overfitting.
+Foi desenvolvida uma API de forma como o CFO possa obter de forma personalizada a previsão para um ou mais clientes de
+forma segmentada conforme a necessidade. 
 
-Alguns testes de algoritmos, como por exemplo a Regressão Polinomial, demoram
-muito tempo para serem executados na busca dos melhores parâmetros. Isso demonstra
-a necessidade de escolher melhores estratégias na escolha dos valores dos parâmetros
-a serem testados. Uma ferramenta que pode ser usada neste caso é RandomizedSearchCV,
-onde são são sorteados aleatorimente uma quantidade de valores definida pelo usuário,
-dentro de todos os valores escolhidos.
+Para facilitar o uso da API foi criado o arquivo **previsao.py**, no qual é possível informar a id do cliente inicial e a quantidade de clientes subjacentes a serem classificados. Um exemplo de uso seria:
 
-Foi observado que os algoritmos de regressão e clusterização não apresentaram
-boas métricas de performance, o que demonstra que somente variar os valores dos
-parâmetros pode não ser suficiente. Isso mostra uma necessidade de uma seleção
-de atributos e uma preparação melhor das variáveis independentes do conjunto de
-dados. Em outras palavras, existe um limite de ganho de performance em tunar
-os valores de parâmetros.
+```
+$ python3 previsao.py 381110 5
+```
 
-Esse ensaio de Machine Learning foi muito importante para aprofundar o
-entendimento sobre o funcionamento de diversos algoritmos de
-classificação, regressão e clusterização e quais os principais parâmetros
-de controle entre os estados de underfitting e overfitting.
+Serão pesquisados os 5 ids a partir do primeiro informado (381110)
+O Resultado obtido será semelhante ao abaixo:
 
 
-# Próximos passos
-Como próximos passos desse ensaio, pretendo ensaiar novos algoritmos
-de Machine Learning e usar diferentes conjuntos de dados para aumentar
-o conhecimento sobre os algoritmos e quais cenários são mais favoráveis
-para o aumento da performance dos mesmos.
+```
+       id     score
+0  381111  0.295314
+1  381112  0.179903
+2  381113  0.014398
+3  381114  0.002474
+4  381110  0.001604
+```
 
-
+Dentre os 5 clientes pesquisados, o id 381111 deve ser o primeiro a ser contactado, pois seu score é maior de todos. 
+Em seguida o id 381112, e assim por diante.
 
