@@ -80,7 +80,8 @@ Efetuar a comparação de performance de aprendizado dos algorimos.
 Passo 8: Pegar o melhor algoritmo do passo anterior e variar os parâmetros, com o objetivo
 de encontrar o conjunto de parâmetros que determina a melhor performance do algoritmo.
 
-Passo 9: Determinar as métricas encontradas
+Passo 9: Analisar as métricas de performance encontradas e o impacto financeiro
+resultado por elas.
 
 
 ## Resultados
