@@ -83,6 +83,8 @@ de encontrar o conjunto de parâmetros que determina a melhor performance do alg
 Passo 9: Analisar as métricas de performance encontradas e o impacto financeiro
 resultado por elas.
 
+Passo 10: Deploy do modelo em produção.
+
 
 ## Resultados
 
