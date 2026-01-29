@@ -54,7 +54,7 @@ biblioteca Pandas para manipulação dos dados e biblioteca Seaborn para
 exibição dos gráficos. 
 
 Foram utilizadas as bibliotecas Scikit-learn e XGBoost para treinamento
-dos algoritmos de machine Learning, além do framework Flask para deploy 
+do algoritmo ML de regressão, além do framework Flask para deploy 
 na web.
 
 
